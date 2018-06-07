@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 
+
 const config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
@@ -11,7 +12,11 @@ const config = {
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
+
 const auth = firebase.auth();
 
-export const database = firebase.database().ref('/posts'); //automatically creates the db this way
-export { auth };
+
+export {
+  auth,
+  firebase
+};

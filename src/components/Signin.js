@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { auth } from '../firebase/firebase';
 import * as routes from '../constants/routes';
+import * as authenticate from '../firebase/auth';
 import './App.css';
 
 const SignInPage = ({ history }) =>
@@ -25,9 +26,13 @@ class SignInForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit = (event) => {
+    event.preventDefault();
+    console.log("signing in");
+    console.log(email);
     const {
       email,
       password,
@@ -36,8 +41,7 @@ class SignInForm extends Component {
     const {
       history,
     } = this.props;
-
-    auth.doSignInWithEmailAndPassword(email, password)
+    authenticate.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.HOME);
@@ -46,7 +50,6 @@ class SignInForm extends Component {
         this.setState(byPropKey('error', error));
       });
 
-    event.preventDefault();
   }
 
   render() {

@@ -12,7 +12,7 @@ import HomePage from './Home';
 import Header from './Header';
 import Footer from './Footer';
 import * as routes from '../constants/routes';
-import { database, auth } from '../firebase/firebase';
+import { base, auth } from '../firebase/firebase';
 import tulips from '../images/TULIP.png';
 
 
@@ -28,12 +28,16 @@ class App extends Component {
   componentDidMount() {
   const database=require('../firebase/firebase');
     database.auth.onAuthStateChanged(authenticated => {
+      console.log("auth state change is being called");
+      console.log(authenticated);
       authenticated
         ? this.setState(() => ({ authenticated }))
         : this.setState(() => ({ authenticated: null }));
     });
+    console.log(this.state.authenticated);
   }
 
+ 
 
   render() {
     return (
