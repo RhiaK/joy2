@@ -20,10 +20,24 @@
   margin-bottom: 40px;
 }
 
+.titlef {
+  border-radius: 0px!important;
+}
+
 .editor {
   margin-top: 150px;
   margin-left: 200px;
   width: 500px;
+}
+
+.quillc {
+  margin-top: 100px;
+  margin-left: 180px;
+}
+
+.quillbut {
+  float: right;
+  border-radius: 0px!important;
 }
 
 .qbut {

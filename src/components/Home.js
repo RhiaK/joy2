@@ -10,8 +10,9 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = { 
+      title: '',
+      body: '',
       posts: [], 
-      authenticated: false
     };
 
     this.onHandleSubmit = this.onHandleSubmit.bind(this);
@@ -49,7 +50,7 @@ class Home extends Component {
       title: this.state.title,
       body: this.state.body
     };
-    firebase.push(post);
+    firebase.database().ref('posts').push(post);
     this.setState ({
       title: '',
       body: ''
@@ -63,8 +64,8 @@ class Home extends Component {
           className="posts"
           key={key}
           >
-          <p>{post.text.title}</p>
-          <p>{renderHTML(post.text.body)}</p>
+          <h4>{post.text.title}</h4>
+          <p>{post.text.body}</p>
         </div>
       )
     });
@@ -75,19 +76,19 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.authenticated);
     this.state.posts.length;
     return (
       <div className="container">
-        {this.props.authenticated
-           ? (
             <div>
             <form
+              className="sm-10 quillc"
               onSubmit={this.onHandleSubmit}
             >
                 <div className="form-group">
                 <input
                   value={this.state.title}
-                  className="form-control" 
+                  className="form-control titlef" 
                   type="text" 
                   name="title" 
                   placeholder="Title"
@@ -105,18 +106,12 @@ class Home extends Component {
                   onChange={this.onHandleChange} 
                 />
                 </div>
-                <button className="btn btn-success">Post</button>
+                <button className="btn btn-success quillbut">Post</button>
             </form>
             <div>
               {this.renderPosts()}
             </div>
             </div>
-          )
-        : null
-        }
-        <div>
-          {this.renderPosts()}
-        </div>
       </div> 
            
 
