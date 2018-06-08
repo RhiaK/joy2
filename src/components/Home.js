@@ -65,7 +65,7 @@ class Home extends Component {
           key={key}
           >
           <h4>{post.text.title}</h4>
-          <p>{post.text.body}</p>
+          <p>{renderHTML(post.text.body)}</p>
         </div>
       )
     });

@@ -33,6 +33,7 @@
 .quillc {
   margin-top: 100px;
   margin-left: 180px;
+  margin-bottom: 150px;
 }
 
 .quillbut {
@@ -71,6 +72,9 @@
 
 .posts {
   margin-left: 200px;
+  margin-bottom: 70px;
+  padding: 10px;
+  background-color: white;
 }
 
 .navtitle {
