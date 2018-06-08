@@ -24,9 +24,14 @@ const NavigationAuth = () =>
 			to={routes.HOME}>Home</Link>
 		</NavItem>
 		<NavItem className="navitem">
-			<Link
-			className="nav1 nava" 
-			to={routes.ACCOUNT}>Account</Link>
+			<Link 
+			className="nav1 navi"
+			to={routes.INSPIRATION}>Inspiration</Link>
+		</NavItem>
+		<NavItem className="navitem">
+			<Link 
+			className="nav1 navf"
+			to={routes.FREEBIES}>Freebies</Link>
 		</NavItem>
 		<NavItem className="navbut">
 			<SignOutButton />
